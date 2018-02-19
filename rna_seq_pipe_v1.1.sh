@@ -11,19 +11,32 @@ date
 pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
 
 # read parameters
-while getopts m:t:g:o:p:r:  opts
+while getopts m:t:g:o:p:r:a:b:f  opts
 do case "$opts" in
 m) marker="$OPTARG";;	# default 'unmarked'
 t) threads="$OPTARG";;	# default 24
 g) species="$OPTARG";;	# hg19, hg38, mm9, mm10, danRer10
 o) R1="$OPTARG";;    # PE read 1, or the SE file, or the sra file
 p) R2="$OPTARG";;    # PE read 2. 
+a) adapter_1="$OPTARG";;   # add adapter1
+b) adapter_2="$OPTARG";;    # add adapter2
 r) types="$OPTARG";;	# PE or SE;
+f) fast_mode=1;;	# fast mode
 h) echo "usage:  path-to-pipe/pipe.sh  -g <hg38/hg19/mm10/mm9/danRer10/personal>  -r <PE/SE> -o read_file1  -p read_file2 (if necessary)"
 exit;;
 [?]) "Usage: ./pipe.sh  -g <hg38/hg19/mm10/mm9/danRer10> -o <read_file1>  -r <PE/SE>";;
 esac
 done
+
+if [ -z "$fast_mode" ]
+then
+echo "  "
+echo "processing whole pipe"
+else
+	echo "  "
+	echo "choosing fast mode, skipping multiQC steps!!!"
+fi
+
 
 if [ -z "$threads" ]
 then
@@ -37,6 +50,13 @@ marker='unmarked'
 fi
 
 source $pipe_path'/rna_seq_qc_source.sh' $species
+
+if [ -z "$adapter_1" ]
+	then
+	adapter_1="AGATCGGAAGAGCACACGTCTGAAC"
+	adapter_2="AGATCGGAAGAGCGTCGTGTAGGGA"
+fi
+
 
 if [[ $R1 == *.sra ]]
 	then name=`echo ${R1%.sra}`
@@ -178,30 +198,24 @@ fi
 
 # step2, alignment and data processing
 # 2.1 alignment by HISAT2
-# STAR  --runThreadN 24 --genomeDir $star_ref --readFilesIn 'Trimed_'$name*'.fastq' --outSAMtype BAM SortedByCoordinate \
-# --outFileNamePrefix 'step2.1_Star_'$name'_'
-if [[ $types == PE ]];
-then
-hisat2 -q -x $hisat2_ref -1 'Trimed_'$name'_1.fastq'  -2 'Trimed_'$name'_2.fastq'  2> step2.1_hisat2_summary.txt | samtools view -bS - | samtools sort - -o step2.1_hisat2_sorted_$name'.bam'
-echo "step2.1, mapping as PE" >> pipe_processing.log
-else
-hisat2 -q -x $hisat2_ref -U 'Trimed_'$name'.fastq' 2> step2.1_hisat2_summary.txt | samtools view -bS - | samtools sort - -o step2.1_hisat2_sorted_$name'.bam'
-echo "step2.1, mapping as SE" >> pipe_processing.log
-fi
+STAR  --runThreadN 24 --genomeDir $star_ref --readFilesIn 'Trimed_'$name*'.fastq' --outSAMtype BAM SortedByCoordinate \
+--outFileNamePrefix 'step2.1_Star_'$name'_'
+#if [[ $types == PE ]];
+#then
+#hisat2 -q -x $hisat2_ref -1 'Trimed_'$name'_1.fastq'  -2 'Trimed_'$name'_2.fastq'  2> step2.1_hisat2_summary.txt | samtools view -bS - | samtools sort - -o step2.1_hisat2_sorted_$name'.bam'
+#echo "step2.1, mapping as PE" >> pipe_processing.log
+#else
+#hisat2 -q -x $hisat2_ref -U 'Trimed_'$name'.fastq' 2> step2.1_hisat2_summary.txt | samtools view -bS - | samtools sort - -o step2.1_hisat2_sorted_$name'.bam'
+#echo "step2.1, mapping as SE" >> pipe_processing.log
+#fi
 
 if [ $? == 0 ] 
 	then
-	echo "step2.1, HISAT2 alignment process sucessful!" >> pipe_processing.log
+	echo "step2.1, STAR alignment process sucessful!" >> pipe_processing.log
 else 
-	echo "step2.1, HISAT2 alignment process fail......" >> pipe_processing.log
+	echo "step2.1, STAR alignment process fail......" >> pipe_processing.log
 	exit 1
 fi
-
-# step2.1_hisat2_summary.txt
-align_0_time_num=`grep "0 times" step2.1_hisat2_summary.txt | head -1 | awk '{print $1}'`
-exact_1_time_num=`grep "exactly 1 time" step2.1_hisat2_summary.txt | head -1 | awk '{print $1}'`
-gt_1_time_num=`grep ">1 times" step2.1_hisat2_summary.txt | head -1 | awk '{print $1}'`
-
 
 for file in `ls *fastq 2> /dev/null`
 do
@@ -211,66 +225,80 @@ rm $file 2> /dev/null
 fi
 done
 
+# step2.1_STAR_summary.txt
+input_reads=`grep "Number of input reads" step2.1_Star_$name'_Log.final.out' | awk -F "|" '{print $2}'`
+exact_1_time_num=`grep "Uniquely mapped reads number"  step2.1_Star_$name'_Log.final.out' | awk '{print $6}'`
+gt_1_time_num=`grep "Number of reads mapped to" step2.1_Star_$name'_Log.final.out'  | awk -F "|" '{print $2}' | awk '{s+=$1}END{print s}'`
+align_0_time_num=`python -c "print($input_reads-$exact_1_time_num-$gt_1_time_num)"`
+
+bam_file='step2.1_Star_'$name'_Aligned.sortedByCoord.out.bam'
+
+cal_qc () {
+
 #index for following step
-samtools index step2.1_hisat2_sorted_$name'.bam'
+samtools index $bam_file
 
 # step2.2, get bigWig file
-python2.7 $RSeQC_script'/bam2wig.py' -s $chrom_size -u -i step2.1_hisat2_sorted_$name'.bam' -o step2.2_$name'.bigWig'
+python2.7 $RSeQC_script'/bam2wig.py' -s $chrom_size -u -i $bam_file -o step2.2_$name'.bigWig'
 rename 's/bigWig.bw/bigWig/' *bw
-
 
 # 3,  QC count: RSeQC
 # 3.1, gene coverage:
-python2.7 $RSeQC_script'/geneBody_coverage.py' -i step2.1_hisat2_sorted_$name'.bam' -r $ref_gene_bed -o 'step3.1_'$name 
+python2.7 $RSeQC_script'/geneBody_coverage.py' -i $bam_file -r $ref_gene_bed -o 'step3.1_'$name 
 auc=`head -1 step3.1_*.r | awk -F "[(]" '{print $2}' | sed 's/)//' | awk -F "[,]" '{for(i=1;i<=NF;i++) t+=$i; print t}'`
 
 # 3.2, RNA fragment size
-python2.7 $RSeQC_script'/RNA_fragment_size.py' -r $ref_gene_bed -i step2.1_hisat2_sorted_$name'.bam'  > 'step3.2_'$name'.fragSize'
+python2.7 $RSeQC_script'/RNA_fragment_size.py' -r $ref_gene_bed -i $bam_file  > 'step3.2_'$name'.fragSize'
 
 # 3.3, inner distance
-python2.7 $RSeQC_script'/inner_distance.py' -i step2.1_hisat2_sorted_$name'.bam' -o 'step3.3_'$name -r $ref_gene_bed
+python2.7 $RSeQC_script'/inner_distance.py' -i $bam_file -o 'step3.3_'$name -r $ref_gene_bed
 
 # 3.4, insertion profile
-python2.7 $RSeQC_script'/insertion_profile.py' -i step2.1_hisat2_sorted_$name'.bam' -s $types -o 'step3.4_'$name
+python2.7 $RSeQC_script'/insertion_profile.py' -i $bam_file -s $types -o 'step3.4_'$name
 
 # 3.5, read GC
-python2.7 $RSeQC_script'/read_GC.py' -i step2.1_hisat2_sorted_$name'.bam' -o 'step3.5_'$name
+python2.7 $RSeQC_script'/read_GC.py' -i $bam_file -o 'step3.5_'$name
 
 # 3.6, reads distribution
-python2.7 $RSeQC_script'/read_distribution.py' -i step2.1_hisat2_sorted_$name'.bam'  -r $ref_gene_bed > 'step3.6_'$name'_read_distribution.txt'
+python2.7 $RSeQC_script'/read_distribution.py' -i $bam_file  -r $ref_gene_bed > 'step3.6_'$name'_read_distribution.txt'
 
 #3.7, reads duplication
-python2.7 $RSeQC_script'/read_duplication.py' -i step2.1_hisat2_sorted_$name'.bam' -o 'step3.7_'$name
+python2.7 $RSeQC_script'/read_duplication.py' -i $bam_file -o 'step3.7_'$name
 
 #3.8, junction annotation
-python2.7 $RSeQC_script'/junction_annotation.py' -i step2.1_hisat2_sorted_$name'.bam'  -o 'step3.8_'$name -r $ref_gene_bed
+python2.7 $RSeQC_script'/junction_annotation.py' -i $bam_file  -o 'step3.8_'$name -r $ref_gene_bed
 
 #3.9, RPKM_saturation.py
-python2.7 $RSeQC_script'/RPKM_saturation.py' -i step2.1_hisat2_sorted_$name'.bam'  -o 'step3.9_'$name -r $ref_gene_bed
+python2.7 $RSeQC_script'/RPKM_saturation.py' -i $bam_file  -o 'step3.9_'$name -r $ref_gene_bed
 
 # 3.10, preseq
 # bamToBed -i 'Star_'$name'_Aligned.sortedByCoord.out.bam' > temp.bed
 # $preseq lc_extrap -o 'yield_'$name'.result' temp.bed  
-$preseq lc_extrap -o 'step3.10_yield_'$name'.result'  -B step2.1_hisat2_sorted_$name'.bam'
+$preseq lc_extrap -o 'step3.10_yield_'$name'.result'  -B $bam_file
 cp 'step3.10_yield_'$name'.result'  ./data_collection_$name/'yield_'$name'.result'
+}
 
 
+if [ -z "$fast_mode" ]
+then
+cal_qc
+fi
 
 # 4.1, feature count
 if [[ $types == PE ]];
 	then
 	echo 'featureCounts on PE data'
 	featureCounts -a $annotation_file -p -T $threads -O  \
-	 -o step4.1_gene_name_fc_$name  -g gene_name step2.1_hisat2_sorted_$name'.bam'
+	 -o step4.1_gene_name_fc_$name  -g gene_name $bam_file
 	featureCounts -a $annotation_file -p -T $threads -O  \
-	 -o step4.1_gene_type_fc_$name -g gene_type step2.1_hisat2_sorted_$name'.bam'
+	 -o step4.1_gene_type_fc_$name -g gene_type $bam_file
 elif [[ $types == SE ]];
 	then
 	echo 'featureCounts on SE data'
 	featureCounts -a $annotation_file -T $threads -O  \
-	 -o step4.1_gene_name_fc_$name  -g gene_name step2.1_hisat2_sorted_$name'.bam'
+	 -o step4.1_gene_name_fc_$name  -g gene_name $bam_file
 	featureCounts -a $annotation_file  -T $threads -O  \
-	 -o step4.1_gene_type_fc_$name -g gene_type step2.1_hisat2_sorted_$name'.bam'
+	 -o step4.1_gene_type_fc_$name -g gene_type $bam_file
 fi
 
 # 4.2, FC collection
