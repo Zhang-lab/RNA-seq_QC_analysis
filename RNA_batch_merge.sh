@@ -1,26 +1,11 @@
 #!/bin/bash
-mkdir rnq_qc_collection
-
-#Processed
+date_now=`date +"%m-%d-%y"`
+mkdir rna_qc_collection_$date_now
+cd rna_qc_collection_$date_now
 temp=`pwd`
-for file in `find . -name "Processed*"`   
-do
-	name=`echo ${file#*Processed_}`
-	#1, gene type distribution
-	cd $file'/data_collection_'$name
-	cp RNA-seq_qc_collection.txt  $temp'/RNA_qc_col_'$name
-	cp step4.2_gene_type_count*txt $temp
-	cp step4.2_gene_name_count*txt $temp
-	# for old pipe:
-	#awk '$0~/====/ {p=1}; p;' step3.6_*read_distribution.txt | tail -n +2 | head -n -1 | awk '{print $1"\t"$2"\t"$3"\t"$4}' > step3.6_$name'_reads_distri_table.txt'
-	cp step3.6_$name'_reads_distri_table.txt' $temp
-	cd $temp
-done
-
 
 #data collection
-temp=`pwd`
-for file in `find . -name "data_collection_*"`   
+for file in `find .. -name "data_collection_*"`   
 do
 	name=`echo ${file#*data_collection_}`
 	#1, gene type distribution
@@ -33,8 +18,6 @@ do
 	cp step3.6_$name'_reads_distri_table.txt' $temp
 	cd $temp
 done
-
-
 
 #1, merge RNA-qc table:
 head -1 `ls RNA_qc_col* | head -1` > merged_RNA_qc_table.txt

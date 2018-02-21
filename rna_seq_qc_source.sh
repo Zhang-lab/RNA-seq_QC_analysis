@@ -7,7 +7,6 @@ pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fastq_dump_tool='fastq-dump.2.8.2'
 preseq="preseq"
 RSeQC_script="/home/shaopengliu/test_rna/scripts"
-ref_gene_bed="/home/shaopengliu/test_rna/mm10_GENCODE_VM11_basic.bed"
 gencode_region='/home/shaopengliu/resources/mm10/mm10_gencode_vM15_gtf_region.bed'
 
 
@@ -18,6 +17,7 @@ if [[ $species == mm10 ]];
 	echo "the specified genome is mm10"  
 	annotation_file="/home/shaopengliu/resources/mm10/gencode.vM15.annotation.gtf" 
 	chrom_size="/home/Resource/Genome/mm10/mm10.chrom.sizes"
+	ref_gene_bed="/home/shaopengliu/test_rna/mm10_GENCODE_VM11_basic.bed"
 	#hisat2_ref="/home/shaopengliu/resources/mm10/hisat2_index/ht2_idx_mm10"
 #elif [[ $species == mm9 ]];
 #	then
@@ -28,6 +28,7 @@ elif [[ $species == hg38 ]];
 	star_ref='/home/Resource/Genome/hg38/STAR_index_gencode.v23.annotation'
 	annotation_file="/home/shaopengliu/resources/hg38/gencode.v27.annotation.gtf" 
 	chrom_size="/home/Resource/Genome/hg38/hg38.25_chromsome.sizes"
+	ref_gene_bed="/home/shaopengliu/test_rna/hg38_RefSeq.bed"
 	#hisat2_ref="/home/shaopengliu/resources/hg38/hg38_hisat2_index/hg38_hisat2_ref"
 #elif [[ $species == hg19 ]];
 #	then
