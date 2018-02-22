@@ -7,8 +7,6 @@ pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fastq_dump_tool='fastq-dump.2.8.2'
 preseq="preseq"
 RSeQC_script="/home/shaopengliu/test_rna/scripts"
-gencode_region='/home/shaopengliu/resources/mm10/mm10_gencode_vM15_gtf_region.bed'
-
 
 # genome specific resources:
 if [[ $species == mm10 ]]; 
