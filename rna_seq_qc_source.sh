@@ -28,9 +28,13 @@ elif [[ $species == hg38 ]];
 	chrom_size="/home/Resource/Genome/hg38/hg38.25_chromsome.sizes"
 	ref_gene_bed="/home/shaopengliu/test_rna/hg38_RefSeq.bed"
 	#hisat2_ref="/home/shaopengliu/resources/hg38/hg38_hisat2_index/hg38_hisat2_ref"
-#elif [[ $species == hg19 ]];
-#	then
-#
+elif [[ $species == hg19 ]];
+	then
+	echo "the specified genome is hg19"
+	star_ref="/home/Resource/Genome/hg19/STAR_index_hg19_gencodeV24"
+	annotation_file="/home/shaopengliu/resources/hg19/gencode.v24lift37.annotation.gtf"
+	chrom_size="/home/Resource/Genome/hg19/hg19_chromosome.size"
+	ref_gene_bed="/home/shaopengliu/test_rna/hg19_RefSeq_RSeQC.bed"
 #elif [[ $species == danRer10 ]];
 #	then
 #
@@ -42,3 +46,5 @@ fi
 # 3, multiqc v1.2
 # 4, preseq 2.0.0
 # 5, STAR 2.5.3a
+
+
