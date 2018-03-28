@@ -5,6 +5,7 @@ Last update: 03/28/2018
 03/28/2018 v1.1b  
 1. build STAR ref by version 2.5.4b, gencode annotation vM15  
 2. change STAR alignment code (stranded)  
+3. reduce gene list for RSeQC RPKM saturation calculation, randomly sampling 5k genes from refseq gene list)  
 
 03/16/2018 v1.1a  
 1. add --outBAMsortingThreadN parameter into STAR  
