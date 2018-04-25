@@ -7,6 +7,7 @@ pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fastq_dump_tool='fastq-dump.2.8.2'
 preseq="preseq"
 RSeQC_script="/home/shaopengliu/pipe_script/github/RNA-seq_QC_analysis/pipe_code/scripts"
+RSeQC_python="python2.7"  #for simg consistency
 
 # genome specific resources:
 if [[ $species == mm10 ]]; 
