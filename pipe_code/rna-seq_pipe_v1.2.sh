@@ -6,7 +6,7 @@
 ###################################################################################################
 # Preparation:
 date
-pipe_version='v1.2'
+pipe_version='v1.2b'
 
 # get the absolute path
 pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
@@ -233,25 +233,25 @@ cp 'step3.10_yield_'$name'.result'  ./data_collection_$name/'yield_'$name'.resul
 rm counts.txt 
 
 # 3.1, gene coverage:
-python2.7 $RSeQC_script'/geneBody_coverage.py' -i $bam_file -r $sub_ref_gene -o 'step3.1_'$name  && \
+$RSeQC_python $RSeQC_script'/geneBody_coverage.py' -i $bam_file -r $sub_ref_gene -o 'step3.1_'$name  && \
 auc=`head -1 step3.1_$name'.geneBodyCoverage.r' | awk -F "[(]" '{print $2}' | sed 's/)//' | awk -F "[,]" '{for(i=1;i<=NF;i++) t+=$i; print t}'`  && \
 cp step3.1_$name'.geneBodyCoverage.txt'  ./data_collection_*  
 
 # 3.2, RNA fragment size
-python2.7 $RSeQC_script'/RNA_fragment_size.py' -r $sub_ref_gene -i $bam_file  > 'step3.2_'$name'.fragSize' 
+$RSeQC_python $RSeQC_script'/RNA_fragment_size.py' -r $sub_ref_gene -i $bam_file  > 'step3.2_'$name'.fragSize' 
 
 # 3.3, inner distance
-python2.7 $RSeQC_script'/inner_distance.py' -i $bam_file -o 'step3.3_'$name -r $sub_ref_gene  
+$RSeQC_python $RSeQC_script'/inner_distance.py' -i $bam_file -o 'step3.3_'$name -r $sub_ref_gene  
 
 # 3.5, read GC
-python2.7 $RSeQC_script'/read_GC.py' -i $bam_file -o 'step3.5_'$name  
+$RSeQC_python $RSeQC_script'/read_GC.py' -i $bam_file -o 'step3.5_'$name  
 
 # 3.6, reads distribution
-python2.7 $RSeQC_script'/read_distribution.py' -i $bam_file  -r $sub_ref_gene > 'step3.6_'$name'_read_distribution.txt'  
+$RSeQC_python $RSeQC_script'/read_distribution.py' -i $bam_file  -r $sub_ref_gene > 'step3.6_'$name'_read_distribution.txt'  
 
 #3.8, junction annotation
 #keep full gene list for this one:
-python2.7 $RSeQC_script'/junction_annotation.py' -i $bam_file  -o 'step3.8_'$name -r $ref_gene_bed  && \
+$RSeQC_python $RSeQC_script'/junction_annotation.py' -i $bam_file  -o 'step3.8_'$name -r $ref_gene_bed  && \
 sed 1d step3.8_$name'.junction.xls' | cut -f 5 | sort | uniq -c > a.txt  && \
 sed 1d step3.8_$name'.junction.xls' | cut -f 4,5 | awk '{if ($2=="complete_novel") s2+=$1; else if ($2=="annotated") s1+=$1; else if ($2=="partial_novel") s3+=$1}END{print s1"\n"s2"\n"s3}' | paste <(awk '{print $2,$1}' OFS="\t" a.txt) -  > step3.8_$name'.result'  && \
 mv step3.8_$name'.result' ./data_collection*  
@@ -310,9 +310,10 @@ cp step4.2_gene_name*txt ./data_collection_$name
 total_count=`awk '{s+=$3}END{print s}' step4.2_gene_name*txt`
 thres=`python -c "print(1.0* $total_count/1000000)"`
 exp_gene_num=`awk -v thres=$thres '$3>thres' step4.2_gene_name*txt | wc -l`
+uniq_ratio=`python -c "print(1.0* $exact_1_time_num/$written_reads)"`
 #summarize together:
-echo -e "name\traw_reads\twritten_reads\talign_0_time\texactly_1_time\tgt_1_time\treads_ratio_with_gene_feature\tauc_genebody\texp_gene_num" > RNA-seq_qc_collection.txt
-echo -e "$name\t$raw_reads\t$written_reads\t$align_0_time_num\t$exact_1_time_num\t$gt_1_time_num\t$rates_with_feature\t$auc\t$exp_gene_num" >> RNA-seq_qc_collection.txt
+echo -e "name\traw_reads\twritten_reads\talign_0_time\texactly_1_time\tuniq_ratio\tgt_1_time\treads_ratio_with_gene_feature\tauc_genebody\texp_gene_num" > RNA-seq_qc_collection.txt
+echo -e "$name\t$raw_reads\t$written_reads\t$align_0_time_num\t$exact_1_time_num\t$uniq_ratio\t$gt_1_time_num\t$rates_with_feature\t$auc\t$exp_gene_num" >> RNA-seq_qc_collection.txt
 mv RNA-seq_qc_collection.txt ./data_collection_$name
 
 # 4.3, FC saturation analysis
