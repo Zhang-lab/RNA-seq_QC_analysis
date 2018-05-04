@@ -117,7 +117,7 @@ file=append(file,list(`RseQC_report`=part6))
 
 saturate=read.table(paste0("step4.3_CPM_saturation_",name,".txt"),header=T)
 part5=data.frame(t(apply(saturate,2,function(x) paste0("?",paste(x,sep="",collapse=","),"?"))))
-colnames(part5)=c("sequence_depth","cpm_from_1_to_10","cpm_from_10_to_50","cpm_greater_than_50","total genes")
+colnames(part5)=c("sequence_depth","cpm_from_1_to_10","cpm_from_10_to_50","cpm_greater_than_50","total_genes")
 file=append(file,list(`saturation`=part5))
 
 library(jsonlite)
