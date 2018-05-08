@@ -1,7 +1,11 @@
-### Current version: v1.1b  
-Last update: 03/28/2018  
+### Current version: v2 (targetv2)    
+Last update: 05/07/2018  
   
 ### Update record: 
+05/07/2018 targetv2  
+1. fix version for target (v2)  
+2. fix docker image and image id for now  
+
 04/12/2018 v1.2  
 1. update cutadapt from v1.14 -> v1.16, now support multi-core trimming  
 
