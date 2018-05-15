@@ -1,0 +1,10 @@
+Thu May 10 16:00:38 CDT 2018
+Target file is head_1.fastq head_2.fastq
+Specified species is hg38
+types of reads is PE
+ 
+step1.1, trimming process sucessful!
+step1.2, fastqc process sucessful!
+step1.3, fastqc data_collection process sucessful!
+step1.4, calculate replicate difference process sucessful!
+step2.1, STAR alignment process sucessful!

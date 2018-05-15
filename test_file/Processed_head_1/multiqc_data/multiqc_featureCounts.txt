@@ -1,0 +1,2 @@
+Sample	Unassigned_Ambiguity	Unassigned_MappingQuality	percent_assigned	Unassigned_Nonjunction	Unassigned_Duplicate	Unassigned_Chimera	Unassigned_Unmapped	Assigned	Unassigned_MultiMapping	Unassigned_Secondary	Unassigned_NoFeatures	Unassigned_FragmentLength	Total
+step2.1_Star_head_1	0	0	46.5028858961	0	0	0	0	15711	17551	0	523	0	33785

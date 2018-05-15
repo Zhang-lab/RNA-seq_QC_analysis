@@ -1,0 +1,12 @@
+PASS	Basic Statistics	Trimed_head_1_2.fastq
+PASS	Per base sequence quality	Trimed_head_1_2.fastq
+PASS	Per tile sequence quality	Trimed_head_1_2.fastq
+PASS	Per sequence quality scores	Trimed_head_1_2.fastq
+FAIL	Per base sequence content	Trimed_head_1_2.fastq
+FAIL	Per sequence GC content	Trimed_head_1_2.fastq
+PASS	Per base N content	Trimed_head_1_2.fastq
+WARN	Sequence Length Distribution	Trimed_head_1_2.fastq
+PASS	Sequence Duplication Levels	Trimed_head_1_2.fastq
+WARN	Overrepresented sequences	Trimed_head_1_2.fastq
+FAIL	Adapter Content	Trimed_head_1_2.fastq
+WARN	Kmer Content	Trimed_head_1_2.fastq

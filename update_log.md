@@ -1,7 +1,13 @@
-### Current version: v2 (targetv2)    
-Last update: 05/07/2018  
+### Current version: v2.2      
+Last update: 05/15/2018  
   
 ### Update record: 
+05/15/2018 v2.2  
+1. remove -O option in featureCount (assign multiple features)  
+
+05/10/2018 v2.1  
+1. add merge bedgraph step for STAR output  
+
 05/07/2018 targetv2  
 1. fix version for target (v2)  
 2. fix docker image and image id for now  
@@ -13,7 +19,7 @@ Last update: 05/07/2018
 03/28/2018 v1.1b  
 1. build STAR ref by version 2.5.4b, gencode annotation vM15  
 2. change STAR alignment code (stranded)  
-3. reduce gene list for RSeQC RPKM saturation calculation, randomly sampling 5k genes from refseq gene list)  
+3. reduce gene list for RSeQC RPKM saturation calculation, randomly sampling 5k genes from refseq gene list  
 4. add cutadapt filter: if no adapter input there would be only quality trim  
 
 
