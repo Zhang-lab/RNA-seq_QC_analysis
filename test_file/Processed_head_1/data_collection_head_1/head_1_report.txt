@@ -2,7 +2,7 @@ $Library
 [1] "head_1"
 
 $Pipeline.version
-[1] "targetv2"
+[1] "v2.2"
 
 $Genome
 [1] "hg38"
@@ -24,10 +24,10 @@ Before alignment library duplicates percentage 27.44%
 After alignment PCR duplicates percentage          0%
 
 $Feature.count
-                                               Sample
-Rate of reads with gene feature               507700%
-Area under curve of gene body coverage 0.465028858961
-Expressed genes with CPM>1                     54.801
+                                                Sample
+Rate of reads with gene feature                507700%
+Area under curve of gene body coverage 0.0288589610774
+Expressed genes with CPM>1                      54.801
 
 $Read.distribution
               Tag counts

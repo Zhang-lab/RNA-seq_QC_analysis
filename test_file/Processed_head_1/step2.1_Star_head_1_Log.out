@@ -377,7 +377,7 @@ Number of real (reference) chromosomes= 25
 24	chrX	156040895	2877816832
 25	chrY	57227415	3034054656
 --sjdbOverhang = 100 taken from the generated genome
-Started loading the genome: Thu May 10 16:01:03 2018
+Started loading the genome: Tue May 15 17:01:27 2018
 
 Genome: size given as a parameter = 3162502416
 SA: size given as a parameter = 24818808972
@@ -391,7 +391,7 @@ Loading Genome ... done! state: good=1 eof=0 fail=0 bad=0; loaded 3162502416 byt
 SA file size: 24818808972 bytes; state: good=1 eof=0 fail=0 bad=0
 Loading SA ... done! state: good=1 eof=0 fail=0 bad=0; loaded 24818808972 bytes
 Loading SAindex ... done: 1565873619 bytes
-Finished loading the genome: Thu May 10 16:02:55 2018
+Finished loading the genome: Tue May 15 17:02:49 2018
 
 Processing splice junctions database sjdbN=353424,   sjdbOverhang=100 
 alignIntronMax=alignMatesGapMax=0, the max intron size will be approximately determined by (2^winBinNbits)*winAnchorDistNbins=589824
@@ -419,15 +419,15 @@ Created thread # 21
 Created thread # 22
 Created thread # 23
 Thread #2 end of input stream, nextChar=-1
-Completed: thread #4
 Completed: thread #3
+Completed: thread #4
 Completed: thread #5
 Completed: thread #6
 Completed: thread #7
 Completed: thread #8
 Completed: thread #9
-Completed: thread #11
 Completed: thread #10
+Completed: thread #11
 Completed: thread #12
 Completed: thread #13
 Completed: thread #14
@@ -438,8 +438,8 @@ Completed: thread #18
 Completed: thread #19
 Completed: thread #20
 Completed: thread #21
-Completed: thread #0
 Completed: thread #22
+Completed: thread #0
 Completed: thread #23
 BAM sorting: 32886 mapped reads
 BAM sorting bins genomic start loci:
@@ -484,7 +484,7 @@ Joined thread # 20
 Joined thread # 21
 Joined thread # 22
 Joined thread # 23
-May 10 16:03:31 ..... started sorting BAM
+May 15 17:03:38 ..... started sorting BAM
 Max memory needed for sorting = 1042190
-May 10 16:03:32 ..... started wiggle output
+May 15 17:03:39 ..... started wiggle output
 ALL DONE!

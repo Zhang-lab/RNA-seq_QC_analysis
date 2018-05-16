@@ -3,10 +3,10 @@
       "file_name": "head_1",
       "genome": "hg38",
       "read_type": "Paired-end data",
-      "pipe_version": "targetv2",
+      "pipe_version": "v2.2",
       "Docker_image_id": "failed_to_get_id",
-      "bash_script_MD5": "a78a4a95d23454671cf207e1487579f5",
-      "running_time": "Thu_May_10_16:00:38_CDT_2018"
+      "bash_script_MD5": "e5c89f7c23a8f28b676d9f7c75adc685",
+      "running_time": "Tue_May_15_17:00:58_CDT_2018"
   },
   "pre_alignment_stats": {
       "program1": "cutadapt",
@@ -32,9 +32,9 @@
       "version": "1.5.1",
       "count_parameter": "-p -O -g <gene_name>/<gene_type>",
       "rate_of_reads_with_gene_feature": 5077,
-      "area_under_curve_of_gene_body_coverage": 0.465,
+      "area_under_curve_of_gene_body_coverage": 0.0289,
       "expressed_genes_with_cpm_larger_than_1": 54.801,
-      "gene_type_fragment_count": {"protein_coding": 14523, "processed_pseudogene": 999, "antisense_RNA": 452, "unprocessed_pseudogene": 116, "processed_transcript": 93, "miRNA": 66, "TEC": 55, "transcribed_processed_pseudogene": 50, "misc_RNA": 45, "lincRNA": 31, "non_coding": 27, "snRNA": 17, "transcribed_unprocessed_pseudogene": 17, "IG_C_gene": 12, "TR_C_gene": 3, "IG_V_gene": 2, "Mt_rRNA": 2, "sense_intronic": 2, "IG_V_pseudogene": 1, "scaRNA": 1, "sense_overlapping": 1, "unitary_pseudogene": 1, "3prime_overlapping_ncRNA": 0, "bidirectional_promoter_lncRNA": 0, "IG_C_pseudogene": 0, "IG_D_gene": 0, "IG_J_gene": 0, "IG_J_pseudogene": 0, "IG_pseudogene": 0, "macro_lncRNA": 0, "Mt_tRNA": 0, "polymorphic_pseudogene": 0, "pseudogene": 0, "ribozyme": 0, "rRNA": 0, "scRNA": 0, "snoRNA": 0, "sRNA": 0, "transcribed_unitary_pseudogene": 0, "translated_processed_pseudogene": 0, "TR_D_gene": 0, "TR_J_gene": 0, "TR_J_pseudogene": 0, "TR_V_gene": 0, "TR_V_pseudogene": 0, "vaultRNA": 0}
+      "gene_type_fragment_count": {"antisense_RNA": 432, "protein_coding": 413, "TEC": 52, "lincRNA": 29, "processed_transcript": 29, "miRNA": 24, "transcribed_unprocessed_pseudogene": 5, "processed_pseudogene": 1, "3prime_overlapping_ncRNA": 0, "bidirectional_promoter_lncRNA": 0, "IG_C_gene": 0, "IG_C_pseudogene": 0, "IG_D_gene": 0, "IG_J_gene": 0, "IG_J_pseudogene": 0, "IG_pseudogene": 0, "IG_V_gene": 0, "IG_V_pseudogene": 0, "macro_lncRNA": 0, "misc_RNA": 0, "Mt_rRNA": 0, "Mt_tRNA": 0, "non_coding": 0, "polymorphic_pseudogene": 0, "pseudogene": 0, "ribozyme": 0, "rRNA": 0, "scaRNA": 0, "scRNA": 0, "sense_intronic": 0, "sense_overlapping": 0, "snoRNA": 0, "snRNA": 0, "sRNA": 0, "transcribed_processed_pseudogene": 0, "transcribed_unitary_pseudogene": 0, "translated_processed_pseudogene": 0, "TR_C_gene": 0, "TR_D_gene": 0, "TR_J_gene": 0, "TR_J_pseudogene": 0, "TR_V_gene": 0, "TR_V_pseudogene": 0, "unitary_pseudogene": 0, "unprocessed_pseudogene": 0, "vaultRNA": 0}
   },
   "yield_distribution": {
       "total_reads": [0,1e+06,2e+06,3e+06,4e+06,5e+06,6e+06,7e+06,8e+06,9e+06,1e+07,1.1e+07,1.2e+07,1.3e+07,1.4e+07,1.5e+07,1.6e+07,1.7e+07,1.8e+07,1.9e+07,2e+07,2.1e+07,2.2e+07,2.3e+07,2.4e+07,2.5e+07,2.6e+07,2.7e+07,2.8e+07,2.9e+07,3e+07,3.1e+07,3.2e+07,3.3e+07,3.4e+07,3.5e+07,3.6e+07,3.7e+07,3.8e+07,3.9e+07,4e+07,4.1e+07,4.2e+07,4.3e+07,4.4e+07,4.5e+07,4.6e+07,4.7e+07,4.8e+07,4.9e+07,5e+07,5.1e+07,5.2e+07,5.3e+07,5.4e+07,5.5e+07,5.6e+07,5.7e+07,5.8e+07,5.9e+07,6e+07,6.1e+07,6.2e+07,6.3e+07,6.4e+07,6.5e+07,6.6e+07,6.7e+07,6.8e+07,6.9e+07,7e+07,7.1e+07,7.2e+07,7.3e+07,7.4e+07,7.5e+07,7.6e+07,7.7e+07,7.8e+07,7.9e+07,8e+07,8.1e+07,8.2e+07,8.3e+07,8.4e+07,8.5e+07,8.6e+07,8.7e+07,8.8e+07,8.9e+07,9e+07,9.1e+07,9.2e+07,9.3e+07,9.4e+07,9.5e+07,9.6e+07,9.7e+07,9.8e+07,9.9e+07,1e+08],
@@ -54,7 +54,7 @@
       "sequence_depth": [10,20,30,40,50,60,70,80,90,100],
       "cpm_from_1_to_10": [0,0,0,0,0,0,0,0,0,0],
       "cpm_from_10_to_50": [0,0,0,0,0,0,0,0,0,0],
-      "cpm_greater_than_50": [48,118,102,214,548,272,489,552,375,3524],
-      "total_genes": [48,118,102,214,548,272,489,552,375,3524]
+      "cpm_greater_than_50": [4,7,8,14,36,13,25,25,19,285],
+      "total_genes": [4,7,8,14,36,13,25,25,19,285]
   }
 } 

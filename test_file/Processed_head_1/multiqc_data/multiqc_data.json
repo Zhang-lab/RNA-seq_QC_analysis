@@ -220,17 +220,17 @@
     "report_general_stats_data": [
         {
             "step2.1_Star_head_1": {
-                "Unassigned_Ambiguity": 0, 
-                "Unassigned_MappingQuality": 0, 
-                "percent_assigned": 46.502885896107735, 
+                "Unassigned_Ambiguity": 10, 
+                "Unassigned_MappingQuality": 4, 
+                "percent_assigned": 2.9154950421784815, 
                 "Unassigned_Nonjunction": 0, 
                 "Unassigned_Duplicate": 0, 
                 "Unassigned_Chimera": 0, 
                 "Unassigned_Unmapped": 0, 
-                "Assigned": 15711, 
-                "Unassigned_MultiMapping": 17551, 
+                "Assigned": 985, 
+                "Unassigned_MultiMapping": 17547, 
                 "Unassigned_Secondary": 0, 
-                "Unassigned_NoFeatures": 523, 
+                "Unassigned_NoFeatures": 15239, 
                 "Unassigned_FragmentLength": 0, 
                 "Total": 33785
             }
@@ -290,7 +290,7 @@
             }
         }
     ], 
-    "config_creation_date": "2018-05-10, 16:06", 
+    "config_creation_date": "2018-05-15, 17:09", 
     "config_title": null, 
     "config_report_comment": null, 
     "config_short_version": "1.4.dev0", 
@@ -366,8 +366,8 @@
             "step2.1_Star_head_1": {
                 "STAR_mqc-generalstats-uniquely_mapped": 16234.0, 
                 "STAR_mqc-generalstats-uniquely_mapped_percent": 8.2, 
-                "featureCounts_mqc-generalstats-Assigned": 15711, 
-                "featureCounts_mqc-generalstats-percent_assigned": 46.502885896107735
+                "featureCounts_mqc-generalstats-Assigned": 985, 
+                "featureCounts_mqc-generalstats-percent_assigned": 2.9154950421784815
             }, 
             "Trimed_head_1_1": {
                 "FastQC_mqc-generalstats-percent_fails": 25.0, 
@@ -379,17 +379,17 @@
         }, 
         "multiqc_featureCounts": {
             "step2.1_Star_head_1": {
-                "Unassigned_Ambiguity": 0, 
-                "Unassigned_MappingQuality": 0, 
-                "percent_assigned": 46.502885896107735, 
+                "Unassigned_Ambiguity": 10, 
+                "Unassigned_MappingQuality": 4, 
+                "percent_assigned": 2.9154950421784815, 
                 "Unassigned_Nonjunction": 0, 
                 "Unassigned_Duplicate": 0, 
                 "Unassigned_Chimera": 0, 
                 "Unassigned_Unmapped": 0, 
-                "Assigned": 15711, 
-                "Unassigned_MultiMapping": 17551, 
+                "Assigned": 985, 
+                "Unassigned_MultiMapping": 17547, 
                 "Unassigned_Secondary": 0, 
-                "Unassigned_NoFeatures": 523, 
+                "Unassigned_NoFeatures": 15239, 
                 "Unassigned_FragmentLength": 0, 
                 "Total": 33785
             }
@@ -475,7 +475,7 @@
     "report_data_sources": {
         "featureCounts": {
             "all_sections": {
-                "step2.1_Star_head_1": "/home/shaopengliu/pipe_script/github/RNA-seq_QC_analysis/test_file/Processed_head_1/step4.1_transcript_fc_head_1.summary"
+                "step2.1_Star_head_1": "/home/shaopengliu/pipe_script/github/RNA-seq_QC_analysis/test_file/Processed_head_1/step4.1_gene_type_fc_head_1.summary"
             }
         }, 
         "STAR": {
@@ -571,21 +571,33 @@
                 [
                     {
                         "data": [
-                            15711.0
+                            985.0
                         ], 
                         "name": "Assigned"
                     }, 
                     {
                         "data": [
-                            17551.0
+                            10.0
+                        ], 
+                        "name": "Unassigned_Ambiguity"
+                    }, 
+                    {
+                        "data": [
+                            17547.0
                         ], 
                         "name": "Unassigned_MultiMapping"
                     }, 
                     {
                         "data": [
-                            523.0
+                            15239.0
                         ], 
                         "name": "Unassigned_NoFeatures"
+                    }, 
+                    {
+                        "data": [
+                            4.0
+                        ], 
+                        "name": "Unassigned_MappingQuality"
                     }
                 ]
             ], 

@@ -1,0 +1,481 @@
+Tue May 15 17:00:58 CDT 2018
+  
+processing whole pipe
+you didn't specify the marker, are you sure to keep the default unmarked
+No adapter trimming happened because there is no adapter input, only quality trimming on reads
+the specified genome is hg38
+trimming RNA-seq PE reads by cutadapt
+fastqc is processing fastq file......
+Started analysis of Trimed_head_1_1.fastq
+Approx 5% complete for Trimed_head_1_1.fastq
+Approx 10% complete for Trimed_head_1_1.fastq
+Approx 15% complete for Trimed_head_1_1.fastq
+Approx 20% complete for Trimed_head_1_1.fastq
+Started analysis of Trimed_head_1_2.fastq
+Approx 25% complete for Trimed_head_1_1.fastq
+Approx 5% complete for Trimed_head_1_2.fastq
+Approx 30% complete for Trimed_head_1_1.fastq
+Approx 10% complete for Trimed_head_1_2.fastq
+Approx 35% complete for Trimed_head_1_1.fastq
+Approx 15% complete for Trimed_head_1_2.fastq
+Approx 40% complete for Trimed_head_1_1.fastq
+Approx 20% complete for Trimed_head_1_2.fastq
+Approx 45% complete for Trimed_head_1_1.fastq
+Approx 25% complete for Trimed_head_1_2.fastq
+Approx 50% complete for Trimed_head_1_1.fastq
+Approx 30% complete for Trimed_head_1_2.fastq
+Approx 55% complete for Trimed_head_1_1.fastq
+Approx 35% complete for Trimed_head_1_2.fastq
+Approx 60% complete for Trimed_head_1_1.fastq
+Approx 40% complete for Trimed_head_1_2.fastq
+Approx 65% complete for Trimed_head_1_1.fastq
+Approx 45% complete for Trimed_head_1_2.fastq
+Approx 70% complete for Trimed_head_1_1.fastq
+Approx 50% complete for Trimed_head_1_2.fastq
+Approx 55% complete for Trimed_head_1_2.fastq
+Approx 75% complete for Trimed_head_1_1.fastq
+Approx 80% complete for Trimed_head_1_1.fastq
+Approx 60% complete for Trimed_head_1_2.fastq
+Approx 85% complete for Trimed_head_1_1.fastq
+Approx 65% complete for Trimed_head_1_2.fastq
+Approx 70% complete for Trimed_head_1_2.fastq
+Approx 90% complete for Trimed_head_1_1.fastq
+Approx 75% complete for Trimed_head_1_2.fastq
+Approx 95% complete for Trimed_head_1_1.fastq
+Approx 80% complete for Trimed_head_1_2.fastq
+Analysis complete for Trimed_head_1_1.fastq
+Approx 85% complete for Trimed_head_1_2.fastq
+Approx 90% complete for Trimed_head_1_2.fastq
+Approx 95% complete for Trimed_head_1_2.fastq
+Analysis complete for Trimed_head_1_2.fastq
+Archive:  Trimed_head_1_1_fastqc.zip
+   creating: Trimed_head_1_1_fastqc/
+   creating: Trimed_head_1_1_fastqc/Icons/
+   creating: Trimed_head_1_1_fastqc/Images/
+  inflating: Trimed_head_1_1_fastqc/Icons/fastqc_icon.png  
+  inflating: Trimed_head_1_1_fastqc/Icons/warning.png  
+  inflating: Trimed_head_1_1_fastqc/Icons/error.png  
+  inflating: Trimed_head_1_1_fastqc/Icons/tick.png  
+  inflating: Trimed_head_1_1_fastqc/summary.txt  
+  inflating: Trimed_head_1_1_fastqc/Images/per_base_quality.png  
+  inflating: Trimed_head_1_1_fastqc/Images/per_tile_quality.png  
+  inflating: Trimed_head_1_1_fastqc/Images/per_sequence_quality.png  
+  inflating: Trimed_head_1_1_fastqc/Images/per_base_sequence_content.png  
+  inflating: Trimed_head_1_1_fastqc/Images/per_sequence_gc_content.png  
+  inflating: Trimed_head_1_1_fastqc/Images/per_base_n_content.png  
+  inflating: Trimed_head_1_1_fastqc/Images/sequence_length_distribution.png  
+  inflating: Trimed_head_1_1_fastqc/Images/duplication_levels.png  
+  inflating: Trimed_head_1_1_fastqc/Images/adapter_content.png  
+  inflating: Trimed_head_1_1_fastqc/Images/kmer_profiles.png  
+  inflating: Trimed_head_1_1_fastqc/fastqc_report.html  
+  inflating: Trimed_head_1_1_fastqc/fastqc_data.txt  
+  inflating: Trimed_head_1_1_fastqc/fastqc.fo  
+Archive:  Trimed_head_1_2_fastqc.zip
+   creating: Trimed_head_1_2_fastqc/
+   creating: Trimed_head_1_2_fastqc/Icons/
+   creating: Trimed_head_1_2_fastqc/Images/
+  inflating: Trimed_head_1_2_fastqc/Icons/fastqc_icon.png  
+  inflating: Trimed_head_1_2_fastqc/Icons/warning.png  
+  inflating: Trimed_head_1_2_fastqc/Icons/error.png  
+  inflating: Trimed_head_1_2_fastqc/Icons/tick.png  
+  inflating: Trimed_head_1_2_fastqc/summary.txt  
+  inflating: Trimed_head_1_2_fastqc/Images/per_base_quality.png  
+  inflating: Trimed_head_1_2_fastqc/Images/per_tile_quality.png  
+  inflating: Trimed_head_1_2_fastqc/Images/per_sequence_quality.png  
+  inflating: Trimed_head_1_2_fastqc/Images/per_base_sequence_content.png  
+  inflating: Trimed_head_1_2_fastqc/Images/per_sequence_gc_content.png  
+  inflating: Trimed_head_1_2_fastqc/Images/per_base_n_content.png  
+  inflating: Trimed_head_1_2_fastqc/Images/sequence_length_distribution.png  
+  inflating: Trimed_head_1_2_fastqc/Images/duplication_levels.png  
+  inflating: Trimed_head_1_2_fastqc/Images/adapter_content.png  
+  inflating: Trimed_head_1_2_fastqc/Images/kmer_profiles.png  
+  inflating: Trimed_head_1_2_fastqc/fastqc_report.html  
+  inflating: Trimed_head_1_2_fastqc/fastqc_data.txt  
+  inflating: Trimed_head_1_2_fastqc/fastqc.fo  
+May 15 17:01:27 ..... started STAR run
+May 15 17:01:27 ..... loading genome
+May 15 17:02:49 ..... started mapping
+May 15 17:03:38 ..... started sorting BAM
+May 15 17:03:39 ..... started wiggle output
+May 15 17:04:57 ..... finished successfully
+VALS_INPUT
+TOTAL READS     = 198074
+DISTINCT READS  = 150152
+DISTINCT COUNTS = 99
+MAX COUNT       = 1413
+COUNTS OF 1     = 135291
+MAX TERMS       = 40
+OBSERVED COUNTS (1414)
+1	135291
+2	9033
+3	2466
+4	1051
+5	621
+6	376
+7	240
+8	158
+9	132
+10	97
+11	91
+12	86
+13	74
+14	34
+15	38
+16	32
+17	21
+18	36
+19	23
+20	20
+21	13
+22	9
+23	9
+24	14
+25	13
+26	5
+27	9
+28	8
+29	9
+30	6
+31	6
+32	8
+33	3
+34	6
+35	6
+36	3
+37	5
+38	6
+39	5
+40	6
+41	1
+43	1
+44	1
+45	3
+46	3
+47	1
+48	3
+49	2
+50	2
+51	1
+52	4
+53	1
+55	4
+58	2
+59	1
+60	1
+65	2
+67	1
+68	2
+69	1
+70	1
+71	2
+74	1
+75	1
+77	1
+78	2
+79	2
+80	1
+84	2
+86	1
+89	1
+90	1
+93	2
+95	1
+100	1
+101	1
+106	1
+116	1
+122	1
+129	1
+134	1
+142	1
+150	2
+151	1
+152	1
+163	2
+165	1
+166	1
+221	1
+250	1
+271	1
+278	1
+430	1
+434	1
+454	1
+512	1
+750	1
+1241	1
+1413	1
+
+[ESTIMATING YIELD CURVE]
+CF_COEFF_ESTIMATES
+135291
+0.0667672
+0.206232
+0.202795
+0.408515
+-0.270284
+-0.258377
+0.718562
+3.27068
+-4.48261
+0.597285
+-0.445605
+-0.0251491
+61.7348
+-60.9718
+-0.00429505
+-1.91601
+2.78007
+-1.04795
+-1.39603
+0.137809
+1.12598
+-0.976101
+-0.261707
+@ 2018-05-15 17:05:02: Read BED file (reference gene model) ...
+@ 2018-05-15 17:05:03: Total 4086 transcripts loaded
+@ 2018-05-15 17:05:03: Get BAM file(s) ...
+	step2.1_Star_head_1_Aligned.sortedByCoord.out.bam
+@ 2018-05-15 17:05:03: Processing step2.1_Star_head_1_Aligned.sortedByCoord.out.bam ...
+	100 transcripts finished	200 transcripts finished	300 transcripts finished	400 transcripts finished	500 transcripts finished	600 transcripts finished	700 transcripts finished	800 transcripts finished	900 transcripts finished	1000 transcripts finished	1100 transcripts finished	1200 transcripts finished	1300 transcripts finished	1400 transcripts finished	1500 transcripts finished	1600 transcripts finished	1700 transcripts finished	1800 transcripts finished	1900 transcripts finished	2000 transcripts finished	2100 transcripts finished	2200 transcripts finished	2300 transcripts finished	2400 transcripts finished	2500 transcripts finished	2600 transcripts finished	2700 transcripts finished	2800 transcripts finished	2900 transcripts finished	3000 transcripts finished	3100 transcripts finished	3200 transcripts finished	3300 transcripts finished	3400 transcripts finished	3500 transcripts finished	3600 transcripts finished	3700 transcripts finished	3800 transcripts finished
+
+
+	Sample	Skewness
+	step2.1_Star_head_1_Aligned.sortedByCoord.out	0.234544412438
+@ 2018-05-15 17:05:37: Running R script ...
+null device 
+          1 
+Get exon regions from /home/shaopengliu/resources/hg38/hg38_RefSeq_subsample_topexp.bed ...
+Load BAM file ...  Done
+Total read pairs  used 16227
+Name	Mean	Median	sd
+step3.3_head_1	-46.4577973015375	-53	35.3111342194963
+null device 
+          1 
+Read BAM file ...  Done
+writing GC content ...
+writing R script ...
+null device 
+          1 
+processing /home/shaopengliu/resources/hg38/hg38_RefSeq_subsample_topexp.bed ... Done
+processing step2.1_Star_head_1_Aligned.sortedByCoord.out.bam ... Finished
+
+Reading reference bed file:  /home/shaopengliu/resources/hg38/hg38_RefSeq.bed  ...  Done
+Load BAM file ...  Done
+
+===================================================================
+Total splicing  Events:	8776
+Known Splicing Events:	8527
+Partial Novel Splicing Events:	118
+Novel Splicing Events:	122
+
+Total splicing  Junctions:	3043
+Known Splicing Junctions:	2897
+Partial Novel Splicing Junctions:	65
+Novel Splicing Junctions:	81
+
+===================================================================
+null device 
+          1 
+null device 
+          1 
+total = 8776
+featureCounts on PE data
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	v1.4.6-p4
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                           P step2.1_Star_head_1_Aligned.sortedByCoord. ... ||
+||                                                                            ||
+||             Output file : step4.1_gene_name_fc_head_1                      ||
+||             Annotations : /home/shaopengliu/resources/hg38/gencode.v27 ... ||
+||                                                                            ||
+||                 Threads : 4                                                ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : yes                                              ||
+||         Strand specific : yes                                              ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||                                                                            ||
+||          Chimeric reads : counted                                          ||
+||        Both ends mapped : not required                                     ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file /home/shaopengliu/resources/hg38/gencode.v27.anno ... ||
+||    Features : 1200453                                                      ||
+||    Meta-features : 56609                                                   ||
+||    Chromosomes/contigs : 25                                                ||
+||                                                                            ||
+|| Process BAM file step2.1_Star_head_1_Aligned.sortedByCoord.out.bam...      ||
+||    Paired-end reads are included.                                          ||
+||    Assign fragments (read pairs) to features...                            ||
+||    Found reads that are not properly paired.                               ||
+||    (missing mate or the mate is not the next read)                         ||
+||    Below are the two reads that are not properly paired:                   ||
+||       SRR5048045.241134   163   chr1   10004   255   99M   =   10008   10  ||
+||       3   N   #   NH:i:1   HI:i:1                                          ||
+||       SRR5048045.113834   419   chr1   10005   0   90M9S   =   10005   90  ||
+||          N   #   NH:i:6   HI:i:3                                           ||
+||    28 reads have missing mates.                                            ||
+||    Input was converted to a format accepted by featureCounts.              ||
+||    Total fragments : 33785                                                 ||
+||    Successfully assigned fragments : 975 (2.9%)                            ||
+||    Running time : 0.79 minutes                                             ||
+||                                                                            ||
+||                         Read assignment finished.                          ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	v1.4.6-p4
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                           P step2.1_Star_head_1_Aligned.sortedByCoord. ... ||
+||                                                                            ||
+||             Output file : step4.1_gene_type_fc_head_1                      ||
+||             Annotations : /home/shaopengliu/resources/hg38/gencode.v27 ... ||
+||                                                                            ||
+||                 Threads : 4                                                ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : yes                                              ||
+||         Strand specific : yes                                              ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||                                                                            ||
+||          Chimeric reads : counted                                          ||
+||        Both ends mapped : not required                                     ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file /home/shaopengliu/resources/hg38/gencode.v27.anno ... ||
+||    Features : 1200453                                                      ||
+||    Meta-features : 46                                                      ||
+||    Chromosomes/contigs : 25                                                ||
+||                                                                            ||
+|| Process BAM file step2.1_Star_head_1_Aligned.sortedByCoord.out.bam...      ||
+||    Paired-end reads are included.                                          ||
+||    Assign fragments (read pairs) to features...                            ||
+||    Found reads that are not properly paired.                               ||
+||    (missing mate or the mate is not the next read)                         ||
+||    Below are the two reads that are not properly paired:                   ||
+||       SRR5048045.241134   163   chr1   10004   255   99M   =   10008   10  ||
+||       3   N   #   NH:i:1   HI:i:1                                          ||
+||       SRR5048045.113834   419   chr1   10005   0   90M9S   =   10005   90  ||
+||          N   #   NH:i:6   HI:i:3                                           ||
+||    28 reads have missing mates.                                            ||
+||    Input was converted to a format accepted by featureCounts.              ||
+||    Total fragments : 33785                                                 ||
+||    Successfully assigned fragments : 985 (2.9%)                            ||
+||    Running time : 0.75 minutes                                             ||
+||                                                                            ||
+||                         Read assignment finished.                          ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	v1.4.6-p4
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                           P step2.1_Star_head_1_Aligned.sortedByCoord. ... ||
+||                                                                            ||
+||             Output file : step4.1_transcript_fc_head_1                     ||
+||             Annotations : /home/shaopengliu/resources/hg38/gencode.v27 ... ||
+||                                                                            ||
+||                 Threads : 4                                                ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : yes                                              ||
+||         Strand specific : yes                                              ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||                                                                            ||
+||          Chimeric reads : counted                                          ||
+||        Both ends mapped : not required                                     ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file /home/shaopengliu/resources/hg38/gencode.v27.anno ... ||
+||    Features : 1200453                                                      ||
+||    Meta-features : 200401                                                  ||
+||    Chromosomes/contigs : 25                                                ||
+||                                                                            ||
+|| Process BAM file step2.1_Star_head_1_Aligned.sortedByCoord.out.bam...      ||
+||    Paired-end reads are included.                                          ||
+||    Assign fragments (read pairs) to features...                            ||
+||    Found reads that are not properly paired.                               ||
+||    (missing mate or the mate is not the next read)                         ||
+||    Below are the two reads that are not properly paired:                   ||
+||       SRR5048045.241134   163   chr1   10004   255   99M   =   10008   10  ||
+||       3   N   #   NH:i:1   HI:i:1                                          ||
+||       SRR5048045.113834   419   chr1   10005   0   90M9S   =   10005   90  ||
+||          N   #   NH:i:6   HI:i:3                                           ||
+||    28 reads have missing mates.                                            ||
+||    Input was converted to a format accepted by featureCounts.              ||
+||    Total fragments : 33785                                                 ||
+||    Successfully assigned fragments : 750 (2.2%)                            ||
+||    Running time : 0.85 minutes                                             ||
+||                                                                            ||
+||                         Read assignment finished.                          ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+97 out of total 975
+195 out of total 975
+292 out of total 975
+390 out of total 975
+487 out of total 975
+585 out of total 975
+682 out of total 975
+780 out of total 975
+877 out of total 975
+[WARNING]         multiqc : MultiQC Version v1.5 now available!
+[INFO   ]         multiqc : This is MultiQC v1.4.dev0
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching '.'
+Searching 103 files..
+[INFO   ]          preseq : Found 2 reports
+[INFO   ]           rseqc : Found 1 read_distribution reports
+[INFO   ]           rseqc : Found 1 gene_body_coverage reports
+[INFO   ]           rseqc : Found 1 inner_distance reports
+[INFO   ]           rseqc : Found 1 read_gc reports
+[INFO   ]  feature_counts : Found 1 reports
+[INFO   ]            star : Found 1 reports
+[INFO   ]        cutadapt : Found 1 reports
+[INFO   ]          fastqc : Found 2 reports
+[INFO   ]         multiqc : Compressing plot data
+[INFO   ]         multiqc : Report      : multiqc_report.html
+[INFO   ]         multiqc : Data        : multiqc_data
+[INFO   ]         multiqc : MultiQC complete
+Loading required package: methods
+processing finished
+Tue May 15 17:10:36 CDT 2018

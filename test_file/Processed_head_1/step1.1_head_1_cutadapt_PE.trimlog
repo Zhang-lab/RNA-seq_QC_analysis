@@ -2,7 +2,7 @@ This is cutadapt 1.16 with Python 3.6.4
 Command line parameters: --no-trim -j 24 -a AGATCGGAAGAGCACACGTCTGAAC -A AGATCGGAAGAGCGTCGTGTAGGGA --quality-cutoff=15,10 --minimum-length=36 -o Trimed_head_1_1.fastq -p Trimed_head_1_2.fastq head_1.fastq head_2.fastq
 Running on 24 cores
 Trimming 2 adapters with at most 10.0% errors in paired-end mode ...
-Finished in 1.70 s (7 us/read; 8.80 M reads/minute).
+Finished in 1.38 s (6 us/read; 10.83 M reads/minute).
 
 === Summary ===
 

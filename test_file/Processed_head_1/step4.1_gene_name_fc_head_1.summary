@@ -1,10 +1,10 @@
 Status	step2.1_Star_head_1_Aligned.sortedByCoord.out.bam
-Assigned	15711
-Unassigned_Ambiguity	0
-Unassigned_MultiMapping	17551
-Unassigned_NoFeatures	523
+Assigned	975
+Unassigned_Ambiguity	20
+Unassigned_MultiMapping	17547
+Unassigned_NoFeatures	15239
 Unassigned_Unmapped	0
-Unassigned_MappingQuality	0
+Unassigned_MappingQuality	4
 Unassigned_FragmentLength	0
 Unassigned_Chimera	0
 Unassigned_Secondary	0

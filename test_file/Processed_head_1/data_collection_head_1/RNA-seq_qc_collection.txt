@@ -1,2 +1,2 @@
 name	raw_reads	written_reads	align_0_time	exactly_1_time	uniq_ratio	gt_1_time	reads_ratio_with_gene_feature	auc_genebody	exp_gene_num
-head_1	250000	198074	176763	16234	0.0819592677484	5077	0.465028858961	54.801	3525
+head_1	250000	198074	176763	16234	0.0819592677484	5077	0.0288589610774	54.801	286

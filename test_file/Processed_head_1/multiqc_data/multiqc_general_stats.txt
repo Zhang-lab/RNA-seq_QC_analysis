@@ -2,4 +2,4 @@ Sample	FastQC_mqc-generalstats-percent_fails	FastQC_mqc-generalstats-avg_sequenc
 Trimed_head_1_1	25.0	95.4280824338	29.6877946448	198074.0	58.0					
 Trimed_head_1_2	25.0	95.6873794642	25.1914635778	198074.0	59.0					
 head_2						22.8019090909				
-step2.1_Star_head_1							16234.0	8.2	15711	46.5028858961
+step2.1_Star_head_1							16234.0	8.2	985	2.91549504218

@@ -4,6 +4,8 @@ Last update: 05/15/2018
 ### Update record: 
 05/15/2018 v2.2  
 1. remove -O option in featureCount (assign multiple features)  
+2. add -Q 10 for featureCount  
+3. add strand option for featureCount, now -s is a required option  
 
 05/10/2018 v2.1  
 1. add merge bedgraph step for STAR output  
