@@ -6,15 +6,15 @@
 ###################################################################################################
 # Preparation:
 date
-pipe_version='targetv2.1'
-host="zhanglab/rna-seq target_v2.1"
+pipe_version='v2.2'
+host="zhanglab/rna-seq target"
 
 # get the absolute path
 pipe_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
 md5=`md5sum $0 | awk '{print $1}'`
 
 # read parameters
-while getopts m:t:g:o:p:r:a:b:f  opts
+while getopts m:t:s:g:o:p:r:a:b:f  opts
 do case "$opts" in
 m) marker="$OPTARG";;	# default 'unmarked'
 t) threads="$OPTARG";;	# default 24
@@ -25,11 +25,21 @@ a) adapter_1="$OPTARG";;   # add adapter1
 b) adapter_2="$OPTARG";;    # add adapter2
 r) types="$OPTARG";;	# PE or SE;
 f) fast_mode=1;;	# fast mode
+s) strand="$OPTARG";;   # set strand specific
 h) echo "usage:  path-to-pipe/pipe.sh  -g <hg38/hg19/mm10/mm9/danRer10/personal>  -r <PE/SE> -o read_file1  -p read_file2 (if necessary)"
 exit;;
 [?]) "Usage: ./pipe.sh  -g <hg38/hg19/mm10/mm9/danRer10> -o <read_file1>  -r <PE/SE>";;
 esac
 done
+
+if [ -z "$strand" ]
+then
+echo "please specific the strand information of the data for featureCount"
+echo -e "\t0 for non-specific\n\t1 for stranded\n\t2 for reverser-stranded"
+echo "please use 0 if you don't know the strand information, but the results are not as precise as it should be if the data are stranded"
+exit
+fi
+
 
 if [ -z "$fast_mode" ]
 then
@@ -274,23 +284,22 @@ fi
 if [[ $types == PE ]];
 	then
 	echo 'featureCounts on PE data'
-	featureCounts -a $annotation_file -p -T 4 \
+	featureCounts -a $annotation_file -p -T 4 -Q 10 -s $strand \
 	 -o step4.1_gene_name_fc_$name  -g gene_name $bam_file  
-	featureCounts -a $annotation_file -p -T 4 \
+	featureCounts -a $annotation_file -p -T 4 -Q 10 -s $strand \
 	 -o step4.1_gene_type_fc_$name -g gene_type $bam_file   
-	featureCounts -a $annotation_file -p -T 4 \
+	featureCounts -a $annotation_file -p -T 4 -Q 10 -s $strand \
 	 -o step4.1_transcript_fc_$name -g transcript_id $bam_file   
 elif [[ $types == SE ]];
 	then
 	echo 'featureCounts on SE data'
-	featureCounts -a $annotation_file -T 4 \
+	featureCounts -a $annotation_file -T 4 -Q 10 -s $strand \
 	 -o step4.1_gene_name_fc_$name  -g gene_name $bam_file  
-	featureCounts -a $annotation_file -T 4 \
+	featureCounts -a $annotation_file -T 4 -Q 10 -s $strand \
 	 -o step4.1_gene_type_fc_$name -g gene_type $bam_file  
-	featureCounts -a $annotation_file -T 4 \
+	featureCounts -a $annotation_file -T 4 -Q 10 -s $strand \
 	 -o step4.1_transcript_fc_$name -g transcript_id $bam_file  
 fi
-
 
 
 # 4.2, FC collection
