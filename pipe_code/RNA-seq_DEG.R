@@ -8,7 +8,7 @@ if(grepl("-h",args[6])) {
   cat("\n####################################################\n")
   cat("# Rscript for performing DEG analysis using DESeq2 #")
   cat("\n####################################################\n")
-  cat("\nVersion: 1.1a (Last modified on 05-07-2018)\n")
+  cat("\nVersion: 1.1a (Last modified on 05-17-2018)\n")
   cat("\nUsage: Rscript RNA-seq_DEG.R EXPRESSION_TABLE DESIGN_TABLE CPM_CUTOFF PVAL_CUTOFF L2F_CUTOFF PERFORMGO_LOGIC SPECIES GO_PVAL_CUTOFF\n")
   cat("\nNote: the parameters are positional, which means you have to follow the above order of parameters\n")
   cat("\n\n<parameter explanation>\n")
@@ -106,6 +106,11 @@ if(grepl("-h",args[6])) {
   } else if(mis==1) {
     cat(paste0("\nRemoving ",mis," covariate with only one level ...\n"))
   }
+  # check if count and colData are in the same order with respect to samples
+  if(sum(rownames(colData)==colnames(readcountsRaw))!=dim(colData)[1]) {
+    colData=colData[order(rownames(colData)),]
+    readcountsRaw=readcountsRaw[,order(colnames(readcountsRaw))]
+  }
   # check if specified contrast interested
   if("contrast"%in%tolower(colnames(colData))) {
     index=which(tolower(colnames(colData))%in%"contrast")
@@ -160,15 +165,31 @@ if(grepl("-h",args[6])) {
   percentVar=round(100*attr(pcaData,"percentVar"))
   
   cat("\nGenerating PCA ...\n")
-  suppressMessages(png("PCA.png",width=2400,height=2000,res=300))
+  suppressMessages(pdf("PCA.pdf",width=9,height=8,paper="special"))
   print(ggplot(pcaData,aes(x=PC1,y=PC2,color=condition))+
           geom_point(size=3)+
           # scale_colour_manual(values=c("#E69F00","#56B4E9"))+
           ggtitle("Principal component analysis")+
           xlab(paste0("PC1: ",percentVar[1],"% variance"))+
           ylab(paste0("PC2: ",percentVar[2],"% variance"))+
-          theme(plot.title=element_text(size=14,family="Tahoma",face="bold",hjust=0.5),
-                text=element_text(size=12,family="Tahoma"),
+          theme(plot.title=element_text(size=14,family="Helvetica",face="bold",hjust=0.5),
+                text=element_text(size=12,family="Helvetica"),
+                axis.title=element_text(face="bold"),
+                axis.text.x=element_text(size=10,face="bold"),
+                axis.text.y=element_text(size=10,face="bold"),
+                legend.text=element_text(size=10,face="bold"),
+                legend.title=element_text(size=10,face="bold")))
+  invisible(dev.off())
+  
+  suppressMessages(pdf("PCA_with_annotation.pdf",width=9,height=8,paper="special"))
+  print(ggplot(pcaData,aes(x=PC1,y=PC2,color=condition))+
+          geom_point()+
+          ggtitle("Principal component analysis with annotation")+
+          geom_text(aes(label=name,fontface=2),hjust=0.5,vjust=-0.8,size=2)+
+          xlab(paste0("PC1: ",percentVar[1],"% variance"))+
+          ylab(paste0("PC2: ",percentVar[2],"% variance"))+
+          theme(plot.title=element_text(size=14,family="Helvetica",face="bold",hjust=0.5),
+                text=element_text(size=12,family="Helvetica"),
                 axis.title=element_text(face="bold"),
                 axis.text.x=element_text(size=10,face="bold"),
                 axis.text.y=element_text(size=10,face="bold"),
@@ -177,7 +198,7 @@ if(grepl("-h",args[6])) {
   invisible(dev.off())
   
   cat("\nGenerating heatmap ...\n")
-  suppressMessages(png("heatmap.png",width=2400,height=2000,res=300))
+  suppressMessages(pdf("heatmap.pdf",width=10,height=8,paper="special",onefile=FALSE))
   pheatmap(cor(assay(rld)),annotation_col=colData,show_colnames=F,main="Heatmap of correlation within samples")
   invisible(dev.off())
   
@@ -188,7 +209,7 @@ if(grepl("-h",args[6])) {
     index=factor(category,levels=c("Regularly expressed",paste0("Highly expressed in ",levels(colData[,1])[k0]),paste0("Highly expressed in ",levels(colData[,1])[k1])),ordered=T)
   }
   plot=data.frame(logFC=res$log2FoldChange,log10p=-log10(res$padj),index=index)
-  suppressMessages(png("volcano_plot.png",width=2600,height=2000,res=300))
+  suppressMessages(pdf("volcano_plot.pdf",width=10,height=8,paper="special"))
   print(ggplot(plot %>% arrange(index),aes(x=logFC,y=log10p,col=index))+
           geom_point(aes(size=index))+
           ggtitle(paste0("Volcano plot of ",levels(colData$condition)[k0]," vs ",levels(colData$condition)[k1]))+
@@ -199,8 +220,8 @@ if(grepl("-h",args[6])) {
           geom_vline(xintercept=as.numeric(args[10]),colour="black",linetype=2)+
           geom_vline(xintercept=-as.numeric(args[10]),colour="black",linetype=2)+
           geom_hline(yintercept=-log10(as.numeric(args[9])),colour="black",linetype=2)+
-          theme(plot.title=element_text(size=14,family="Tahoma",face="bold",hjust=0.5),
-                text=element_text(size=12,family="Tahoma"),
+          theme(plot.title=element_text(size=14,family="Helvetica",face="bold",hjust=0.5),
+                text=element_text(size=12,family="Helvetica"),
                 axis.title=element_text(face="bold"),
                 axis.text.x=element_text(size=10,face="bold"),
                 axis.text.y=element_text(size=10,face="bold"),
@@ -209,7 +230,7 @@ if(grepl("-h",args[6])) {
   invisible(dev.off())
   
   cat("\nGenerating MA plot ...\n")
-  suppressMessages(png("MA_plot.png",width=2400,height=2000,res=300))
+  suppressMessages(pdf("MA_plot.pdf",width=8,height=8,paper="special"))
   plotMA(dds,ylim=c(-3,3),main="DESeq2 MA plot")
   invisible(dev.off())
   

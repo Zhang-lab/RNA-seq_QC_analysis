@@ -1,8 +1,0 @@
-pdf("step3.8_head_1.splice_events.pdf")
-events=c(1.34457611668,1.39015496809,97.1627164995)
-pie(events,col=c(2,3,4),init.angle=30,angle=c(60,120,150),density=c(70,70,70),main="splicing events",labels=c("partial_novel 1%","complete_novel 1%","known 97%"))
-dev.off()
-pdf("step3.8_head_1.splice_junction.pdf")
-junction=c(2.13604995071,2.66184686165,95.2021031876)
-pie(junction,col=c(2,3,4),init.angle=30,angle=c(60,120,150),density=c(70,70,70),main="splicing junctions",labels=c("partial_novel 2%","complete_novel 3%","known 95%"))
-dev.off()
