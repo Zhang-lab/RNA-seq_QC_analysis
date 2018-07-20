@@ -1,7 +1,10 @@
-### Current version: `v3`      
-Last update: 06/06/2018  
+### Current version: `v3.1`      
+Last update: 07/13/2018  
   
-### Update record: 
+### Update record:  
+07/13/2018 v3.1  
+1. adjust json output  
+
 06/06/2018 v3  
 1. add RSEM for transcript level quantification (featureCounts not as expected)  
 2. modify output json files  
