@@ -1,0 +1,2 @@
+Sample	Multi	Unique	Uncertain	alignable_percent	Alignable	Filtered	Unalignable	Total
+step4.4_Rsem_out_hg38_aaa_1	11994	112938	81685	100.0	124932	0	0	124932

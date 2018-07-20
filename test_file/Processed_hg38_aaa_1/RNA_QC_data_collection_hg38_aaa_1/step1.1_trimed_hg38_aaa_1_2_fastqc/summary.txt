@@ -1,0 +1,11 @@
+PASS	Basic Statistics	step1.1_trimed_hg38_aaa_1_2.fastq
+PASS	Per base sequence quality	step1.1_trimed_hg38_aaa_1_2.fastq
+PASS	Per tile sequence quality	step1.1_trimed_hg38_aaa_1_2.fastq
+PASS	Per sequence quality scores	step1.1_trimed_hg38_aaa_1_2.fastq
+WARN	Per base sequence content	step1.1_trimed_hg38_aaa_1_2.fastq
+FAIL	Per sequence GC content	step1.1_trimed_hg38_aaa_1_2.fastq
+PASS	Per base N content	step1.1_trimed_hg38_aaa_1_2.fastq
+WARN	Sequence Length Distribution	step1.1_trimed_hg38_aaa_1_2.fastq
+PASS	Sequence Duplication Levels	step1.1_trimed_hg38_aaa_1_2.fastq
+WARN	Overrepresented sequences	step1.1_trimed_hg38_aaa_1_2.fastq
+FAIL	Adapter Content	step1.1_trimed_hg38_aaa_1_2.fastq

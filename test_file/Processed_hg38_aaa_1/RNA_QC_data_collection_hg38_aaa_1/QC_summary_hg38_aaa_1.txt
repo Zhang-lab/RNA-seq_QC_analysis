@@ -1,0 +1,2 @@
+name	raw_reads	written_reads	average_input_read_length	before_alignment_dup	after_alignment_dup	align_0_time	exactly_1_time	uniq_ratio	gt_1_time	auc_genebody	assigned_reads_number	reads_ratio_with_gene_feature	all_gene_num	genes_CPM_gt_1
+hg38_aaa_1	250000	198074	192	0.274395	0.080885	32909	150405	0.759337419348	14760	42.3586	129392	0.860290548851	10085	10085

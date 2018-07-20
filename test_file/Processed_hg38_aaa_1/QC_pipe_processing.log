@@ -1,0 +1,23 @@
+Fri Jul 13 22:01:40 UTC 2018
+Target file is hg38_aaa_1.fastq hg38_aaa_2.fastq
+Specified species is mm10
+types of reads is PE
+strand selection is 0
+ 
+step1.1, trimming process sucessful!
+step1.2, fastqc process sucessful!
+step1.3, fastqc data_collection process sucessful!
+step1.4, calculate replicate difference process sucessful!
+step2.1, STAR alignment process sucessful!
+step2.3 preseq rough estimate sucessful!
+step3.1, geneBody_coverage sucessful!
+step3.2, RNA_fragment_size calculation sucessful!
+step3.3, inner_distance calculation sucessful!
+step3.4, junction_annotation sucessful!
+step3.5, GC calculation sucessful!
+step3.6, read_distribution calculation sucessful!
+step4.1, featureCount process sucessful!
+step4.2, summarising results successful!
+step4.3, saturation process sucessful!
+step4.4, Rsem process sucessful!
+Fri Jul 13 22:19:00 UTC 2018

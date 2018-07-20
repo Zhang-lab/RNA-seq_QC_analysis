@@ -1,7 +1,13 @@
-### Current version: v2.2      
-Last update: 05/15/2018  
+### Current version: `v3`      
+Last update: 06/06/2018  
   
 ### Update record: 
+06/06/2018 v3  
+1. add RSEM for transcript level quantification (featureCounts not as expected)  
+2. modify output json files  
+3. modify output folder structure and file names  
+4. verify strand information on STAR alignment step  
+
 05/15/2018 v2.2  
 1. remove -O option in featureCount (assign multiple features)  
 2. add -Q 10 for featureCount  

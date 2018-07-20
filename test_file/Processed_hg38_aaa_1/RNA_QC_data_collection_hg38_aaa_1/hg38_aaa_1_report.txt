@@ -1,0 +1,55 @@
+$Library
+[1] "hg38_aaa_1"
+
+$Pipeline.version
+[1] "v3.1"
+
+$Genome
+[1] "mm10"
+
+$Data.type
+[1] "Paired-end data"
+
+$Library.size
+                                  Sample
+Total reads                       250000
+Written reads by cutadapt         198074
+Written reads percentage          79.23%
+Reads average length                 192
+Reads aligned 0 time               32909
+Reads aligned exactly 1 time      150405
+Reads aligned greater than 1 time  14760
+
+$Library.complexity
+                                               Sample
+Before alignment library duplicates percentage 27.44%
+After alignment duplicates percentage           8.09%
+
+$Feature.count
+                                        Sample
+Ratio of reads with gene feature        86.03%
+Area under curve of gene body coverage 42.3586
+All genes number                         10085
+Expressed genes with CPM>1               10085
+
+$Read.distribution
+              Tag counts
+CDS_Exons         114103
+5'UTR_Exons        15665
+3'UTR_Exons        20622
+Introns             8022
+TSS_up_1kb          1646
+TSS_up_5kb          4562
+TSS_up_10kb         8658
+TES_down_1kb         992
+TES_down_5kb        6187
+TES_down_10kb      13039
+
+$GC.content
+                            Sample
+Median GC content            58.22
+Read counts of GC in 0-25      435
+Read counts of GC in 25-50   35349
+Read counts of GC in 50-75  252354
+Read counts of GC in 75-100  12608
+
