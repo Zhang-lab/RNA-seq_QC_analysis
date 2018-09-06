@@ -98,6 +98,12 @@ part4=data.frame("featureCounts","1.5.1","gencode.v27.annotation.gtf","-p -g <ge
 colnames(part4)=c("software","version","annotation_file_version","count_parameter","number_of_uniquely_mapped_fragments_with_gene_feature","ratio_of_uniquely_mapped_fragments_with_gene_feature","area_under_curve_of_gene_body_coverage",  "reads_in_Mt_rRNA", "reads_in_Mt_tRNA", "reads_in_ribozyme", "reads_in_rRNA"  ,"detected_genes_number","detected_genes_with_cpm_larger_than_1","detected_genes_cpm_distribution","gene_type_fragment_count")
 file=append(file,list(`feature_counting`=part4))
 
+if (file.exists(paste0("step4.2_temp_globin_",name,".txt"))) {
+  globin_count=read.table(paste0("step4.2_temp_globin_",name,".txt"), header=F)
+  part42<-data.frame(t(data.frame(globin_count$V2, row.names=globin_count$V1)), row.names=NULL)
+  file=append(file, list(`globin_genes`=part42))
+}
+
 yield=read.table(paste0("step2.3_yield_",name,".result"),sep='\t',header=T)
 yield=yield[yield$TOTAL_READS<=1e8,]
 
@@ -141,4 +147,5 @@ file=append(file,list(`saturation`=part5))
 
 library(jsonlite)
 capture.output(toJSON(file,pretty=T),file=paste(name,"report.json",sep='_'))
+
 

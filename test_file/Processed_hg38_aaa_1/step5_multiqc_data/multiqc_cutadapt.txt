@@ -1,2 +1,0 @@
-Sample	bp_processed	bp_written	percent_trimmed	quality_trimmed
-hg38_aaa_2	49500000	38213055	22.8019090909	7576456

@@ -1,6 +1,6 @@
 # RNA_seq_analysis_pipe  
 This is for the QC matrix construction, data analysis and visualization for RNA-seq data.  
-Current version: `V3.1`   
+Current version: `v4`   
 
 Advisor: Bo Zhang  
 Contributor: Cheng Lyu and Shaopeng Liu  

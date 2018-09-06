@@ -1,4 +1,0 @@
-rRNA	583
-Mt_rRNA	114
-ribozyme	2
-Mt_tRNA	0

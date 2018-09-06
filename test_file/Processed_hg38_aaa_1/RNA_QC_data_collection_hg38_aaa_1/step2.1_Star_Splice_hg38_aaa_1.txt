@@ -1,6 +1,0 @@
-Numberofsplices:Total	80483
-Numberofsplices:Annotated(sjdb)	79227
-Numberofsplices:GT/AG	79653
-Numberofsplices:GC/AG	487
-Numberofsplices:AT/AC	157
-Numberofsplices:Non-canonical	186
