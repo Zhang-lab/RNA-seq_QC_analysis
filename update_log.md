@@ -4,7 +4,7 @@ Last update: 09/05/2018
 ### Update record:  
 09/05/2018 v4  
 1. remove strand option for featureCount (added in v2.2); now we will use chr10 reads to do a test to determine the strand information  
-2. add globin gene counts from featureCount into json output  
+2. for mm10, add globin gene counts from featureCount into json output  
 
 07/13/2018 v3.1  
 1. adjust json output  
