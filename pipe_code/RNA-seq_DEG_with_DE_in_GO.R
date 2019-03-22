@@ -150,7 +150,7 @@ if(grepl("-h",args[6])) {
   if(sum(grepl(levels(colData$condition)[k0],colnames(cpm))|grepl(levels(colData$condition)[k1],colnames(cpm)))==0) {
     colnames(cpm)=paste(colData[colData$condition%in%levels(colData$condition)[c(k0,k1)],1],rownames(colData)[colData$condition%in%levels(colData$condition)[c(k0,k1)]],sep="_")
   }
-  cpm=cpm[,c(grep(levels(colData$condition)[k0],colnames(cpm)),grep(levels(colData$condition)[k1],colnames(cpm)))]
+  cpm=cpm[,c((rownames(colData)[colData$condition==levels(colData$condition)[k0]]), rownames(colData)[colData$condition==levels(colData$condition)[k1]] )]
   # Turning off cook's distance testing and independent filtering since we have filtered out lowly expressed genes with cpm
   res=results(dds,contrast=c("condition",levels(colData$condition)[k0],levels(colData$condition)[k1]),alpha=0.05,independentFiltering=F,cooksCutoff=Inf)
   res=cbind(as.data.frame(res),cpm)
@@ -252,12 +252,10 @@ if(grepl("-h",args[6])) {
     if(args[12]=="Hs")
     {
       GO3Name="hsa"
-    }
-    else if (args[12]=="Mm")
+    } else if (args[12]=="Mm")
     {
       GO3Name="mmu"
-    }
-    else if(args[12]=="Dr")
+    } else if(args[12]=="Dr")
     {
       GO3Name="dre"
     }

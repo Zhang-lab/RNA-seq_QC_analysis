@@ -27,6 +27,9 @@ do
     rm $file2
 done
 
+## for danRer10, remove those space to underscore
+for f in step4.2* ; do sed -i 's/ \+/_/g' "$f" ; done
+
 #2, merge gene-type count:
 tail -n +2 `ls step4.2_gene_type_count_*txt | head -1` | sort | awk '{print $1"\t"$2}' | cat <(echo -e "type\tlength") - > temp.txt
 for file3 in `ls step4.2_gene_type_count_*txt`

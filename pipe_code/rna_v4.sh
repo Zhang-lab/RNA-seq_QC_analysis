@@ -59,20 +59,19 @@ if [ -z "$adapter_1" ]
     echo "No adapter trimming happened because there is no adapter input, only quality trimming on reads"
 fi
 
-if [[ $R1 == *.sra ]]
+if [[ $R1 == *.sra ]] 
     then name=`echo ${R1%.sra}`
     echo "this is sra file, $fastq_dump_tool would be used......"
-    $fastq_dump_tool $R1 --split-3
-    raw1=$name'_1.fastq'
-    raw2=$name'_2.fastq'
-elif [[ $R1 == *.fastq* ]] && [[ $types == PE  ]]
+elif [[ $R1 == *.fastq* || *.fq.gz ]] && [[ $types == PE  ]]
     then
     name=`echo ${R1%.fastq*}`
+    name=`echo ${name%.fq.gz}`
     raw1=$R1
     raw2=$R2
-elif [[ $R1 == *.fastq* ]] && [[ $types == SE ]]
+elif [[ $R1 == *.fastq* || *.fq.gz ]] && [[ $types == SE ]]
     then
     name=`echo ${R1%.fastq*}`
+    name=`echo ${name%.fq.gz}`
     raw1=$R1
 else
     echo "please use fastq(or fastq.gz) file or sra file......"
@@ -87,9 +86,8 @@ fi
 # step0 preparation
 s0_rna_pre () {
     mkdir 'Processed_'$name
-    ln -rs $R1    ./'Processed_'$name/
-    ln -rs $raw1  ./'Processed_'$name/  2> /dev/null
-    ln -rs $raw2  ./'Processed_'$name/  2> /dev/null
+    ln -s `realpath $R1`    ./'Processed_'$name/$R1
+    ln -s `realpath $R2 2> /dev/null`  ./'Processed_'$name/$R2  2> /dev/null
     cd ./'Processed_'$name/
     mkdir 'RNA_QC_data_collection_'$name
     touch QC_pipe_processing.log
@@ -101,6 +99,17 @@ s0_rna_pre () {
     echo "Specified species is $species" >> QC_pipe_processing.log
     echo "types of reads is $types" >> QC_pipe_processing.log
     echo " " >> QC_pipe_processing.log
+
+    
+    if [[ $R1 == *.sra ]];then
+	$fastq_dump_tool $R1 --split-3
+	if [[ $types == PE  ]]; then
+	    raw1=$name'_1.fastq'
+    	    raw2=$name'_2.fastq'
+	elif [[ $types == SE ]];then
+	    raw1=$name'.fastq'
+	fi
+    fi
 }
 
 # step1.1 trim by cutadapt
@@ -336,10 +345,12 @@ s4.1_fc () {
     s1_hit=`grep Assigned test_s1_fc.summary | awk '{print $2}'`
     s2_hit=`grep Assigned test_s2_fc.summary | awk '{print $2}'`
     echo -e "for chr10 subsample, the strand hits of featureCounts are: \ns0: $s0_hit;\ns1: $s1_hit;\ns2: $s2_hit" >> QC_pipe_processing.log
+    strand=0
     [[ $s0_hit -gt $s1_hit ]] && [[ $s0_hit -gt $s2_hit ]] && strand=0
     [[ $s1_hit -gt $s0_hit ]] && [[ $s1_hit -gt $s2_hit ]] && strand=1
     [[ $s2_hit -gt $s0_hit ]] && [[ $s2_hit -gt $s1_hit ]] && strand=2
     echo "the strand choice for featureCounts is $strand" >> QC_pipe_processing.log
+    rm test_s*
 
     if [[ $types == PE ]];
         then
@@ -369,7 +380,7 @@ s4.1_fc () {
 # step4.2 collect featureCount results
 s4.2_collect () {
     echo -e "gene_name\tlength\tfragment_count" > 'step4.2_gene_name_count_'$name'.txt'
-    tail -n +3 step4.1_gene_name_fc_$name | awk '{print $1"\t"$6"\t"$7}' | sort -k3,3rn >> 'step4.2_gene_name_count_'$name'.txt'
+    tail -n +3 step4.1_gene_name_fc_$name | awk -F "\t" '{print $1"\t"$6"\t"$7}' | sort -k3,3rn >> 'step4.2_gene_name_count_'$name'.txt'
 
     # grep mm10 globin genes into json
     if [ $species == "mm10" ]; then
@@ -378,7 +389,7 @@ s4.2_collect () {
     fi
 
     echo -e "gene_type\tlength\tfragment_count" > 'step4.2_gene_type_count_'$name'.txt'
-    tail -n +3 step4.1_gene_type_fc_$name | awk '{print $1"\t"$6"\t"$7}' | sort -k3,3rn >> 'step4.2_gene_type_count_'$name'.txt'
+    tail -n +3 step4.1_gene_type_fc_$name | awk -F "\t" '{print $1"\t"$6"\t"$7}' | sort -k3,3rn >> 'step4.2_gene_type_count_'$name'.txt'
 
     # ratio of reads with feature
     total_cc=`awk '{s+=$2}END{print s}' step4.1_gene_name_fc*summary`

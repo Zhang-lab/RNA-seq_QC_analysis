@@ -94,7 +94,7 @@ ex.dis=paste0("!",paste(c("@between_1_and_10@","@between_10_and_50@","@larger_th
 type_distri=read.table(paste0("step4.2_temp_store_",name,".txt"), header=F)
 rownames(type_distri)<-type_distri[, 1]
 
-part4=data.frame("featureCounts","1.5.1","gencode.v27.annotation.gtf","-p -g <gene_name>/<gene_type> -Q 10 -s <0,1,2>",as.numeric(round(qc[1,12],4)),as.numeric(round(qc[1,13],4)),as.numeric(qc[1,11]),  type_distri["Mt_rRNA", 2],type_distri["Mt_tRNA", 2],type_distri["ribozyme", 2], type_distri["rRNA", 2]    ,as.numeric(qc[1,14]),as.numeric(qc[1,15]),ex.dis,gene_type)
+part4=data.frame("featureCounts","1.5.1","gtf_ToBeChange","-p -g <gene_name>/<gene_type> -Q 10 -s <0,1,2>",as.numeric(round(qc[1,12],4)),as.numeric(round(qc[1,13],4)),as.numeric(qc[1,11]),  type_distri["Mt_rRNA", 2],type_distri["Mt_tRNA", 2],type_distri["ribozyme", 2], type_distri["rRNA", 2]    ,as.numeric(qc[1,14]),as.numeric(qc[1,15]),ex.dis,gene_type)
 colnames(part4)=c("software","version","annotation_file_version","count_parameter","number_of_uniquely_mapped_fragments_with_gene_feature","ratio_of_uniquely_mapped_fragments_with_gene_feature","area_under_curve_of_gene_body_coverage",  "reads_in_Mt_rRNA", "reads_in_Mt_tRNA", "reads_in_ribozyme", "reads_in_rRNA"  ,"detected_genes_number","detected_genes_with_cpm_larger_than_1","detected_genes_cpm_distribution","gene_type_fragment_count")
 file=append(file,list(`feature_counting`=part4))
 

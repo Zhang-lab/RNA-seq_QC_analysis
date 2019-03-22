@@ -13,20 +13,20 @@ preseq="/usr/bin/preseq"
 fastqc="/usr/bin/fastqc"
 STAR="/usr/bin/STAR"
 samtools="/usr/local/bin/samtools"
-featureCounts="/usr/bin/featureCounts"
-rsem="/home/shaopengliu/tools/anaconda3/bin/rsem-calculate-expression"
+featureCounts="/home/shaopengliu/tools/subread-1.6.3-Linux-x86_64/bin/featureCounts"
+rsem="/home/shaopengliu/tools/RSEM-1.3.0/rsem-calculate-expression"
 multiqc="/usr/local/bin/multiqc"
 
 # genome specific resources:
 if [[ $species == mm10 ]]; 
     then
-    star_ref='/home/Resource/Genome/mm10/STAR_index_mm10_v2.5.4b.gencode.vM15'
+    star_ref="/home/shaopengliu/resources/mm10/STAR_index_mm10_v2.5.4b_gencode_vM20"
     echo "the specified genome is mm10"  
-    annotation_file="/home/shaopengliu/resources/mm10/gencode.vM15.annotation.gtf" 
+    annotation_file="/home/shaopengliu/resources/mm10/gencode.vM20.annotation.gtf" 
     chrom_size="/home/Resource/Genome/mm10/mm10.chrom.sizes"
     ref_gene_bed="/home/shaopengliu/resources/mm10/mm10_GENCODE_VM11_basic.bed"
     sub_ref_gene="/home/shaopengliu/resources/mm10/mm10_GENCODE_VM11_basic_subsample.bed"
-    rsem_ref="/home/shaopengliu/resources/mm10/rsem_ref/mm10_rsem_ref"
+    rsem_ref="/home/shaopengliu/resources/mm10/rsem_ref_vM20/rsem_ref_vM20"
 elif [[ $species == hg38 ]];
     then
     echo "the specified genome is hg38"
@@ -52,6 +52,22 @@ elif [[ $species == danRer10 ]];
     chrom_size="/home/shaopengliu/resources/danRer10/danRer10.chrom.sizes"
     ref_gene_bed="/home/shaopengliu/resources/danRer10/Refgene_danRer10_RSeQC.bed"
     rsem_ref="/home/shaopengliu/resources/danRer10/rsem_ref/danRer10_rsem_ref"
+elif [[ $species == dm6 ]];
+    then
+    echo "the specified genome is dm6"
+    star_ref="/home/shaopengliu/resources/dm6/STAR_index_dm6"
+    annotation_file="/home/shaopengliu/resources/dm6/Drosophila_melanogaster.BDGP6.94.chr.gtf"
+    chrom_size="/home/shaopengliu/resources/dm6/d.mel.chrom.sizes"
+    ref_gene_bed="
+    rsem_ref="
+elif [[ $species == rn6 ]];
+    then
+    echo "the specified genome is rn6"
+    star_ref="/home/bemiao/RNA-seq/rn6"
+    annotation_file="/home/bemiao/RNA-seq/rn6_genome/Rattus_norvegicus.Rnor_6.0.95.gtf"
+    chrom_size="/home/bemiao/RNA-seq/rn6_genome/rn6.chrom.sizes"
+    ref_gene_bed="/home/bemiao/RNA-seq/rn6_genome/rn6_Ens_gene.bed"
+    rsem_ref="/home/bemiao/RNA-seq/rn6_resm_ref/rn6_ensembl"
 fi
 
 if [ -z "$sub_ref_gene" ]
