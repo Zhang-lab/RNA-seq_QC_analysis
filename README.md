@@ -15,7 +15,14 @@ Step1. download singularity container (you only need download the containcer for
 ####  
 ```bash
 # download image from local server:  
-wget http://brc.wustl.edu/SPACE/shaopengliu/Singularity_image/rna-seq/rna-seq_mm10_v4.simg  
+wget http://regmedsrv1.wustl.edu/Public_SPACE/shaopengliu/Singularity_image/rna-seq/rna-seq_mm10_v4.simg  
+```
+
+or for human
+
+```bash
+# download image from local server:
+wget http://regmedsrv1.wustl.edu/Public_SPACE/shaopengliu/Singularity_image/rna-seq/hg38_rna-seq.simg
 ```
 
 Step2. process data by the singularity image: 
